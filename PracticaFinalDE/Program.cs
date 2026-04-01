@@ -142,5 +142,60 @@ class PracticaFinaDE
         Console.WriteLine($"  Corriente Rama B             : {iRamaB:F2} A");
         Console.WriteLine();
 
+        // ============================================================
+        //  PARTE III — TRANSFERENCIA DE CALOR POR CONDUCCIÓN
+        //  FÓRMULA: Q = k × A × (ΔT / L)
+        // ============================================================
+
+        Console.WriteLine("══════════════════════════════════════════════════════════");
+        Console.WriteLine("  PARTE III — TRANSFERENCIA DE CALOR (CONDUCCIÓN)");
+        Console.WriteLine("══════════════════════════════════════════════════════════");
+
+        // Conductividad térmica del aluminio en W/m·°C (dato del enunciado)
+        double k = 205.0;
+
+        // Área de la carcasa del motor en metros cuadrados (dato del enunciado)
+        double area = 0.35;
+
+        // Espesor en milímetros tal como viene en el enunciado
+        double espesorMm = 8.0;
+
+        // CONVERSIÓN: milímetros → metros (dividir entre 1000)
+        // Esto se hace en el código como pide el enunciado explícitamente
+        double L = espesorMm / 1000.0;   // 8 mm → 0.008 m
+
+        // Temperatura exterior (ambiente del puerto) — dato del enunciado
+        double tExterior = 35.0;
+
+        // ΔT = temperatura interior (motor) - temperatura exterior (ambiente)
+        // tempC viene calculado desde la Parte I
+        double deltaT = tempC - tExterior;
+
+        // FÓRMULA DE FOURIER: Q = k × A × (ΔT / L)
+        // k  = conductividad térmica (W/m·°C)
+        // A  = área de transferencia (m²)
+        // ΔT = diferencia de temperatura entre caras (°C)
+        // L  = espesor del material (m)
+        double Q = k * area * (deltaT / L);
+
+        // Impresión de todos los parámetros y resultado
+        Console.WriteLine($"  Conductividad (k)            : {k:F2} W/m·°C");
+        Console.WriteLine($"  Área (A)                     : {area:F2} m²");
+        Console.WriteLine($"  Espesor                      : {espesorMm} mm → {L:F4} m");
+        Console.WriteLine($"  Temperatura interior (motor) : {tempC:F2} °C");
+        Console.WriteLine($"  Temperatura exterior (amb.)  : {tExterior:F2} °C");
+        Console.WriteLine($"  Diferencia de temperatura    : {deltaT:F2} °C");
+        Console.WriteLine($"  Calor transferido (Q)        : {Q:F2} W");
+
+        // ALERTA AUTOMÁTICA: si Q supera 800 W se imprime advertencia
+        // El "if" evalúa la condición; si es verdadera ejecuta el bloque {}
+        if (Q > 800.0)
+        {
+            // Este mensaje aparece solo cuando Q > 800 W
+            Console.WriteLine("\n  ⚠  ALERTA: Se requiere sistema de enfriamiento");
+        }
+
+        Console.WriteLine();
+
     } // fin de Main
 } // fin de class
