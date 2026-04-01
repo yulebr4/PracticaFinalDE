@@ -79,5 +79,68 @@ class PracticaFinaDE
         // Línea vacía de separación entre secciones
         Console.WriteLine();
 
+        // ============================================================
+        //  PARTE II — ANÁLISIS DE CIRCUITO ELÉCTRICO MIXTO
+        //  Matrícula 0769:
+        //    Primer dígito = 0  →  R1 = 10 + 0 = 10 Ω
+        //    Último dígito = 9  →  R4 = 15 + 9 = 24 Ω
+        // ============================================================
+
+        Console.WriteLine("══════════════════════════════════════════════════════════");
+        Console.WriteLine("  PARTE II — CIRCUITO ELÉCTRICO MIXTO");
+        Console.WriteLine("══════════════════════════════════════════════════════════");
+
+        // Voltaje de la fuente de alimentación en Voltios
+        double voltaje = 220.0;
+
+        // --- Definición de resistencias ---
+        // R1: valor base 10 Ω + primer dígito matrícula (0) = 10 Ω
+        double R1 = 10.0 + 0.0;
+
+        // R2: valor fijo según enunciado
+        double R2 = 25.0;
+
+        // R3: valor fijo según enunciado
+        double R3 = 40.0;
+
+        // R4: valor base 15 Ω + último dígito matrícula (9) = 24 Ω
+        double R4 = 15.0 + 9.0;
+
+        // --- Resistencia de cada rama ---
+        // Rama A: R1 y R2 en SERIE → se suman directamente
+        double rRamaA = R1 + R2;   // 10 + 25 = 35 Ω
+
+        // Rama B: R3 y R4 en SERIE → se suman directamente
+        double rRamaB = R3 + R4;   // 40 + 24 = 64 Ω
+
+        // --- Resistencia total (Rama A en PARALELO con Rama B) ---
+        // FÓRMULA paralelo: R_total = (R_A × R_B) / (R_A + R_B)
+        double rTotal = (rRamaA * rRamaB) / (rRamaA + rRamaB);
+
+        // --- Corriente total — LEY DE OHM: I = V / R ---
+        double iTotal = voltaje / rTotal;
+
+        // --- Potencia total disipada — FÓRMULA: P = V × I ---
+        double potenciaTotal = voltaje * iTotal;
+
+        // --- Corriente por cada rama — LEY DE OHM: I = V / R_rama ---
+        // En paralelo el voltaje es el mismo en ambas ramas (220 V)
+        double iRamaA = voltaje / rRamaA;
+        double iRamaB = voltaje / rRamaB;
+
+        // --- Impresión de resultados ---
+        Console.WriteLine($"  R1 (Rama A)                  : {R1:F2} Ω");
+        Console.WriteLine($"  R2 (Rama A)                  : {R2:F2} Ω");
+        Console.WriteLine($"  R3 (Rama B)                  : {R3:F2} Ω");
+        Console.WriteLine($"  R4 (Rama B)                  : {R4:F2} Ω");
+        Console.WriteLine($"  Resistencia Rama A (R1+R2)   : {rRamaA:F2} Ω");
+        Console.WriteLine($"  Resistencia Rama B (R3+R4)   : {rRamaB:F2} Ω");
+        Console.WriteLine($"  Resistencia Total (paralelo) : {rTotal:F2} Ω");
+        Console.WriteLine($"  Corriente Total              : {iTotal:F2} A");
+        Console.WriteLine($"  Potencia Total Disipada      : {potenciaTotal:F2} W");
+        Console.WriteLine($"  Corriente Rama A             : {iRamaA:F2} A");
+        Console.WriteLine($"  Corriente Rama B             : {iRamaB:F2} A");
+        Console.WriteLine();
+
     } // fin de Main
 } // fin de class
