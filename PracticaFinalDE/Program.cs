@@ -197,5 +197,60 @@ class PracticaFinaDE
 
         Console.WriteLine();
 
+        // ============================================================
+        //  PARTE IV — CONCLUSIÓN AUTOMÁTICA DEL ESTADO DEL MOTOR
+        //
+        //  CRITERIO DE DECISIÓN (justificado):
+        //  🔴 CRÍTICO     → Q > 5000 W (riesgo de fallo estructural)
+        //                   O potencia eléctrica > 3000 W
+        //  🟡 ADVERTENCIA → Q > 800 W (requiere enfriamiento adicional)
+        //                   O error del sensor > 1%
+        //  🟢 NORMAL      → Ninguna condición anterior se cumple
+        // ============================================================
+
+        Console.WriteLine("══════════════════════════════════════════════════════════");
+        Console.WriteLine("  PARTE IV — ESTADO FINAL DEL MOTOR");
+        Console.WriteLine("══════════════════════════════════════════════════════════");
+
+        // Variable string para guardar el texto del estado
+        string estado;
+
+        // Estructura if-else if-else para evaluar múltiples condiciones
+        // C# evalúa de arriba hacia abajo y entra al primer bloque verdadero
+
+        // CONDICIÓN CRÍTICO: calor extremo O potencia eléctrica muy alta
+        if (Q > 5000.0 || potenciaTotal > 3000.0)
+        {
+            // El operador || significa OR (cualquiera de las dos basta)
+            estado = "🔴 CRÍTICO";
+        }
+        // CONDICIÓN ADVERTENCIA: calor sobre el límite O sensor impreciso
+        else if (Q > 800.0 || errorRelativo > 1.0)
+        {
+            estado = "🟡 ADVERTENCIA";
+        }
+        // Si ninguna condición anterior fue verdadera → motor normal
+        else
+        {
+            estado = "🟢 NORMAL";
+        }
+
+        // Se imprime el estado final del motor
+        Console.WriteLine($"  Estado del motor             : {estado}");
+        Console.WriteLine();
+
+        // Justificación con los valores que llevaron a esa conclusión
+        Console.WriteLine("  Justificación:");
+        Console.WriteLine($"  • Calor transferido Q = {Q:F2} W  (límite ALERTA: 800 W)");
+        Console.WriteLine($"  • Potencia eléctrica  = {potenciaTotal:F2} W  (límite CRÍTICO: 3000 W)");
+        Console.WriteLine($"  • Error del sensor    = {errorRelativo:F2} %  (límite ADVERTENCIA: 1 %)");
+
+        // Pie del reporte
+        Console.WriteLine();
+        Console.WriteLine("============================================================");
+        Console.WriteLine("   FIN DEL REPORTE");
+        Console.WriteLine("============================================================");
+
     } // fin de Main
+
 } // fin de class
