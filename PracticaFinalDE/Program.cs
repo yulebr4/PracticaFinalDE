@@ -49,9 +49,13 @@ class PracticaFinaDE
         Console.WriteLine("  PARTE I — CONVERSIÓN DE TEMPERATURA");
         Console.WriteLine("══════════════════════════════════════════════════════════");
 
-        // Variable tipo double para guardar decimales con precisión
-        // 269.0 porque los últimos 2 dígitos de 0769 son 69 → 269 °F
-        double tempF = 269.0;
+        // Se le pide al usuario que ingrese la temperatura en °F
+        // Console.Write (sin ln) imprime sin saltar de línea, para que el cursor quede al lado
+        Console.Write("  Ingrese la temperatura de operacion en °F: ");
+
+        // Console.ReadLine() lee lo que el usuario escribe y lo guarda como texto
+        // double.Parse(...) convierte ese texto a número decimal
+        double tempF = double.Parse(Console.ReadLine());
 
         // FÓRMULA: °C = (°F - 32) × 5 ÷ 9
         // Se usa 5.0 y 9.0 (con decimal) para que C# haga división real
@@ -181,7 +185,7 @@ class PracticaFinaDE
         // Impresión de todos los parámetros y resultado
         Console.WriteLine($"  Conductividad (k)            : {k:F2} W/m·°C");
         Console.WriteLine($"  Área (A)                     : {area:F2} m²");
-        Console.WriteLine($"  Espesor                      : {espesorMm} mm → {L:F4} m");
+        Console.WriteLine($"  Espesor                      : {espesorMm} mm -> {L:F4} m");
         Console.WriteLine($"  Temperatura interior (motor) : {tempC:F2} °C");
         Console.WriteLine($"  Temperatura exterior (amb.)  : {tExterior:F2} °C");
         Console.WriteLine($"  Diferencia de temperatura    : {deltaT:F2} °C");
