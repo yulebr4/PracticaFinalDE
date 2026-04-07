@@ -192,7 +192,7 @@ class PracticaFinaDE
         if (Q > 800.0)
         {
             // Este mensaje aparece solo cuando Q > 800 W
-            Console.WriteLine("\n  ⚠  ALERTA: Se requiere sistema de enfriamiento");
+            Console.WriteLine("\n  !! ALERTA: Se requiere sistema de enfriamiento");
         }
 
         Console.WriteLine();
@@ -219,20 +219,20 @@ class PracticaFinaDE
         // C# evalúa de arriba hacia abajo y entra al primer bloque verdadero
 
         // CONDICIÓN CRÍTICO: calor extremo O potencia eléctrica muy alta
-        if (Q > 5000.0 || potenciaTotal > 3000.0)
+        if (Q > 800000.0 || potenciaTotal > 3000.0)
         {
             // El operador || significa OR (cualquiera de las dos basta)
-            estado = "🔴 CRÍTICO";
+            estado = "[CRITICO]";
         }
         // CONDICIÓN ADVERTENCIA: calor sobre el límite O sensor impreciso
         else if (Q > 800.0 || errorRelativo > 1.0)
         {
-            estado = "🟡 ADVERTENCIA";
+            estado = "[ADVERTENCIA]";
         }
         // Si ninguna condición anterior fue verdadera → motor normal
         else
         {
-            estado = "🟢 NORMAL";
+            estado = "[NORMAL]";
         }
 
         // Se imprime el estado final del motor
