@@ -1,4 +1,4 @@
-﻿// VIDEO: 
+﻿// VIDEO: https://drive.google.com/file/d/1vcoTwPRROXKMwMwSncljXLP-dhvz8t31/view?usp=sharing
 // Estudiante: Yulenny Bonilla
 // Matrícula:  0769
 // Curso:      IND-421 — Diseño de Experimentos
